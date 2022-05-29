@@ -72,7 +72,7 @@ The `ACID` database transaction model ensures that a performed transaction is al
 * **Soft State** – Due to the lack of immediate consistency, data values may change over time. The BASE model breaks off with the concept of a database which enforces its own consistency, delegating that responsibility to developers.
 * **Eventually Consistent** – The fact that BASE does not enforce immediate consistency does not mean that it never achieves it. However, until it does, data reads are still possible (even though they might not reflect the reality).
 
-### 6) Name several use cases where Serverless architecture would be beneficial.
+# 6) Name several use cases where Serverless architecture would be beneficial.
 * Run something infrequently (example: once a day or once a month)
 * Trigger-based tasks
 Any user activity that triggers an event or a series of events is a good candidate for serverless architecture. For instance, a user signing up on your website may trigger a database change, which may, in turn, trigger a welcome email. The backend work can be handled through a chain of serverless functions.

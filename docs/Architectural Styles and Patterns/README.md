@@ -39,7 +39,7 @@
 # 4) What does hybrid architectural style mean? Think of your current and previous projects and try to describe which architectural styles they most likely followed.
 Hybrid architectural style is combination architectural styles (Application Landscape, Application Structure, User Interface). This approach helps to solve complex problems.
 As a rule, large enterprise products have a hybrid architectural style. That allows businesses to be more flexible and improve their apps and technologies.
-The architecture style of my current project would be explained as hybrid. This is a combination of a Monolithic, Service-Oriented and and Layered architecture
+The architecture style of my current project would be explained as hybrid. This is a combination of a Monolithic, Service-Oriented and and N-tier architecture
 
 # 5) Name several examples of the distributed architectures. What do `ACID` and `BASE` terms mean?
 ### Examples of the distributed architectures

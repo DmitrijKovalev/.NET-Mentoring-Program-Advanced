@@ -7,6 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.stylecop\stylecop.json = .stylecop\stylecop.json
 		.stylecop\stylecop.ruleset = .stylecop\stylecop.ruleset
+		.stylecop\stylecop_tests.ruleset = .stylecop\stylecop_tests.ruleset
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FC8028B4-7863-4FA2-B0B3-87DD8828D83D}"
@@ -18,6 +19,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{79CAD1E4-F95F-4F6D-B9F5-0A937693261D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.IntegrationTests", "tests\integration\OnlineStore.CartService.IntegrationTests\OnlineStore.CartService.IntegrationTests.csproj", "{B39221D5-6C44-4EA0-B24F-178813CAFA32}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{CE1CFA07-8976-474E-B5F3-C49BCC71C86C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CartService.UnitTests", "tests\unit\OnlineStore.CartService.UnitTests\OnlineStore.CartService.UnitTests.csproj", "{49AE899A-7394-41F7-AB44-2DAF242FD57C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49AE899A-7394-41F7-AB44-2DAF242FD57C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AE899A-7394-41F7-AB44-2DAF242FD57C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AE899A-7394-41F7-AB44-2DAF242FD57C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AE899A-7394-41F7-AB44-2DAF242FD57C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +50,8 @@ Global
 		{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
 		{79CAD1E4-F95F-4F6D-B9F5-0A937693261D} = {AE911589-D225-4DA4-8604-F4459CBD1AD5}
 		{B39221D5-6C44-4EA0-B24F-178813CAFA32} = {79CAD1E4-F95F-4F6D-B9F5-0A937693261D}
+		{CE1CFA07-8976-474E-B5F3-C49BCC71C86C} = {AE911589-D225-4DA4-8604-F4459CBD1AD5}
+		{49AE899A-7394-41F7-AB44-2DAF242FD57C} = {CE1CFA07-8976-474E-B5F3-C49BCC71C86C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49E3B142-884E-468D-95AB-D7319E4301CE}

@@ -1,13 +1,13 @@
-﻿using OnlineStore.CartService.BusinessLogicLayer.Exceptions;
+﻿using OnlineStore.CartService.Core.Exceptions;
 using OnlineStore.CartService.Core.Interfaces;
 using OnlineStore.CartService.Core.Models;
 
-namespace OnlineStore.CartService.BusinessLogicLayer.Services
+namespace OnlineStore.CartService.BusinessLogicLayer
 {
     /// <summary>
     /// Cart service.
     /// </summary>
-    internal class CartService : ICartService
+    public class CartService : ICartService
     {
         private readonly ICartRepository cartRepository;
 
@@ -23,6 +23,11 @@ namespace OnlineStore.CartService.BusinessLogicLayer.Services
         /// <inheritdoc/>
         public async Task<Cart> GetCartByIdAsync(string cartId)
         {
+            if (string.IsNullOrEmpty(cartId))
+            {
+                throw new ArgumentNullException(nameof(cartId));
+            }
+
             var cart = await this.cartRepository.GetCartByIdAsync(cartId);
 
             if (cart is null)

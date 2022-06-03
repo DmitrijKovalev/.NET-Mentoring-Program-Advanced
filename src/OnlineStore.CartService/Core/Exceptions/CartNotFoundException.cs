@@ -1,4 +1,4 @@
-﻿namespace OnlineStore.CartService.BusinessLogicLayer.Exceptions
+﻿namespace OnlineStore.CartService.Core.Exceptions
 {
     /// <summary>
     /// Cart not found exception.

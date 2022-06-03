@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32505.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{8DC2F8A1-5E9E-48FF-A2BE-314DDBA77334}"
+	ProjectSection(SolutionItems) = preProject
+		.stylecop\stylecop.json = .stylecop\stylecop.json
+		.stylecop\stylecop.ruleset = .stylecop\stylecop.ruleset
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FC8028B4-7863-4FA2-B0B3-87DD8828D83D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{AE911589-D225-4DA4-8604-F4459CBD1AD5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService", "src\OnlineStore.CartService\OnlineStore.CartService.csproj", "{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{79CAD1E4-F95F-4F6D-B9F5-0A937693261D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.IntegrationTests", "tests\integration\OnlineStore.CartService.IntegrationTests\OnlineStore.CartService.IntegrationTests.csproj", "{B39221D5-6C44-4EA0-B24F-178813CAFA32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B39221D5-6C44-4EA0-B24F-178813CAFA32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5D3F3295-8872-4AE0-BDA9-DEC21CD56E0F} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
+		{79CAD1E4-F95F-4F6D-B9F5-0A937693261D} = {AE911589-D225-4DA4-8604-F4459CBD1AD5}
+		{B39221D5-6C44-4EA0-B24F-178813CAFA32} = {79CAD1E4-F95F-4F6D-B9F5-0A937693261D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49E3B142-884E-468D-95AB-D7319E4301CE}
+	EndGlobalSection
+EndGlobal

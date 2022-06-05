@@ -11,6 +11,6 @@
         /// <value>
         /// <placeholder>Database connection string.</placeholder>
         /// </value>
-        public string DbConnectionString { get; set; }
+        public string DatabaseConnectionString { get; set; }
     }
 }

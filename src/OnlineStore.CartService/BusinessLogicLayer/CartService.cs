@@ -43,6 +43,8 @@ namespace OnlineStore.CartService.BusinessLogicLayer
         {
             try
             {
+                this.ValidateCartItem(item);
+
                 var cart = await this.GetCartByIdAsync(cartId);
                 var existingItem = cart.CartItems.FirstOrDefault(cartItem => cartItem.Id == item.Id);
                 if (existingItem is null)
@@ -94,6 +96,29 @@ namespace OnlineStore.CartService.BusinessLogicLayer
         {
             _ = await this.GetCartByIdAsync(cartId);
             await this.cartRepository.DeleteCartByIdAsync(cartId);
+        }
+
+        private void ValidateCartItem(CartItem item)
+        {
+            if (item is null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
+            if (item.Id == default)
+            {
+                throw new ArgumentException(nameof(item.Id));
+            }
+
+            if (item.Price == default)
+            {
+                throw new ArgumentException(nameof(item.Price));
+            }
+
+            if (string.IsNullOrEmpty(item.Name))
+            {
+                throw new ArgumentException(nameof(item.Name));
+            }
         }
     }
 }

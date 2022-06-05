@@ -1,35 +1,45 @@
-﻿using OnlineStore.CartService.Core.Interfaces;
+﻿using MongoDB.Driver;
+using OnlineStore.CartService.Core.Interfaces;
 using OnlineStore.CartService.Core.Models;
+using OnlineStore.CartService.Core.Models.Configuration;
 
 namespace OnlineStore.CartService.DataAccessLayer
 {
     /// <summary>
     /// Cart repository.
     /// </summary>
-    internal class CartRepository : ICartRepository
+    public class CartRepository : BaseRepository, ICartRepository
     {
-        /// <inheritdoc/>
-        public Task<Cart> GetCartByIdAsync(string cartId)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CartRepository"/> class.
+        /// </summary>
+        /// <param name="configuration">The configuration.</param>
+        public CartRepository(CartServiceConfiguration configuration) : base(configuration)
         {
-            throw new NotImplementedException();
         }
 
         /// <inheritdoc/>
-        public Task CreateCartAsync(Cart cart)
+        public async Task<Cart> GetCartByIdAsync(string cartId)
         {
-            throw new NotImplementedException();
+            return await this.CartCollection?.Find(c => c.Id.Equals(cartId))?.FirstOrDefaultAsync();
         }
 
         /// <inheritdoc/>
-        public Task UpdateCartAsync(Cart cart)
+        public async Task CreateCartAsync(Cart cart)
         {
-            throw new NotImplementedException();
+            await this.CartCollection?.InsertOneAsync(cart);
         }
 
         /// <inheritdoc/>
-        public Task DeleteCartByIdAsync(string cartId)
+        public async Task UpdateCartAsync(Cart cart)
         {
-            throw new NotImplementedException();
+            await this.CartCollection?.ReplaceOneAsync(c => c.Id.Equals(cart.Id), cart);
+        }
+
+        /// <inheritdoc/>
+        public async Task DeleteCartByIdAsync(string cartId)
+        {
+            await this.CartCollection?.DeleteOneAsync(c => c.Id.Equals(cartId));
         }
     }
 }

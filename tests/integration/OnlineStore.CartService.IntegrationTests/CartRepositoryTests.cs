@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Microsoft.Extensions.Configuration;
 using OnlineStore.CartService.Core.Models;
 using OnlineStore.CartService.Core.Models.Configuration;
 using OnlineStore.CartService.DataAccessLayer;
@@ -10,24 +9,20 @@ using Xunit;
 namespace OnlineStore.CartService.IntegrationTests
 {
     [ExcludeFromCodeCoverage]
+    [Collection(nameof(MongoDatabaseFixtureCollection))]
     public class CartRepositoryTests : IDisposable
     {
-        private const string ConfigurationFileName = "appsettings.json";
-
         private readonly CartServiceConfiguration configuration;
         private readonly MongoHelperRepository mongoHelperRepository;
 
-        public CartRepositoryTests()
+        public CartRepositoryTests(MongoDatabaseFixture mongoDatabaseFixture)
         {
-            var options = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile(ConfigurationFileName)
-                .Build();
+            this.configuration = new CartServiceConfiguration
+            {
+                DatabaseConnectionString = mongoDatabaseFixture.Configuration.DatabaseConnectionString,
+            };
 
-            var configuration = options.Get<CartServiceConfiguration>();
-
-            this.configuration = configuration;
-            this.mongoHelperRepository = new MongoHelperRepository(configuration);
+            this.mongoHelperRepository = new MongoHelperRepository(this.configuration);
         }
 
         [Fact]

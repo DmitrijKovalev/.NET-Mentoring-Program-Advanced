@@ -22,7 +22,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.Int
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{CE1CFA07-8976-474E-B5F3-C49BCC71C86C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CartService.UnitTests", "tests\unit\OnlineStore.CartService.UnitTests\OnlineStore.CartService.UnitTests.csproj", "{49AE899A-7394-41F7-AB44-2DAF242FD57C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.UnitTests", "tests\unit\OnlineStore.CartService.UnitTests\OnlineStore.CartService.UnitTests.csproj", "{49AE899A-7394-41F7-AB44-2DAF242FD57C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

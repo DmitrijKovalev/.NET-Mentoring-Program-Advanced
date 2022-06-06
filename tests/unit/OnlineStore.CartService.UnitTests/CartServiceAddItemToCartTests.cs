@@ -1,10 +1,8 @@
 ﻿using Moq;
 using OnlineStore.CartService.Core.Interfaces;
 using OnlineStore.CartService.Core.Models;
-using OnlineStore.CartService.BusinessLogicLayer;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
-using OnlineStore.CartService.Core.Exceptions;
 using Shouldly;
 using OnlineStore.CartService.UnitTests.Data;
 
@@ -55,7 +53,6 @@ namespace OnlineStore.CartService.UnitTests
             var action = () => cartService.AddItemToCartAsync(cartId, null);
 
             // Assert
-
             var exception = await Should.ThrowAsync<ArgumentNullException>(action);
         }
 
@@ -72,7 +69,6 @@ namespace OnlineStore.CartService.UnitTests
             var action = () => cartService.AddItemToCartAsync(cartId, cartItem);
 
             // Assert
-
             var exception = await Should.ThrowAsync<ArgumentException>(action);
         }
 
@@ -89,7 +85,6 @@ namespace OnlineStore.CartService.UnitTests
             var action = () => cartService.AddItemToCartAsync(cartId, cartItem);
 
             // Assert
-
             var exception = await Should.ThrowAsync<ArgumentException>(action);
         }
 
@@ -106,7 +101,6 @@ namespace OnlineStore.CartService.UnitTests
             var action = () => cartService.AddItemToCartAsync(cartId, cartItem);
 
             // Assert
-
             var exception = await Should.ThrowAsync<ArgumentException>(action);
         }
 
@@ -123,7 +117,6 @@ namespace OnlineStore.CartService.UnitTests
             var action = () => cartService.AddItemToCartAsync(cartId, cartItem);
 
             // Assert
-
             var exception = await Should.ThrowAsync<UriFormatException>(action);
         }
 

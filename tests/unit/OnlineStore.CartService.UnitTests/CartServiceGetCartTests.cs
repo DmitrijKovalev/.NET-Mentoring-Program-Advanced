@@ -1,7 +1,6 @@
 ﻿using Moq;
 using OnlineStore.CartService.Core.Interfaces;
 using OnlineStore.CartService.Core.Models;
-using OnlineStore.CartService.BusinessLogicLayer;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using OnlineStore.CartService.Core.Exceptions;
@@ -73,7 +72,7 @@ namespace OnlineStore.CartService.UnitTests
                 .Setup(repository => repository.GetCartByIdAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(cart))
                 .Verifiable();
-            
+
             var cartService = new BusinessLogicLayer.CartService(cartRepository.Object);
 
             // Act

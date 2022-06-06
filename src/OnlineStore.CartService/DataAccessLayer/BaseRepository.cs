@@ -31,14 +31,26 @@ namespace OnlineStore.CartService.DataAccessLayer
         }
 
         /// <summary>
+        /// Gets cart collection name.
+        /// </summary>
+        /// <value>
+        /// <placeholder>Cart collection name.</placeholder>
+        /// </value>
+        protected internal string CartCollectionName => nameof(Cart);
+
+        /// <summary>
         /// Gets cart collection.
         /// </summary>
         /// <value>
         /// <placeholder>Cart collection.</placeholder>
         /// </value>
-        protected internal IMongoCollection<Cart> CartCollection => this.GetContext().GetCollection<Cart>(nameof(Cart));
+        protected internal IMongoCollection<Cart> CartCollection => this.GetContext().GetCollection<Cart>(this.CartCollectionName);
 
-        private IMongoDatabase GetContext()
+        /// <summary>
+        /// Gets database context.
+        /// </summary>
+        /// <returns>Database context.</returns>
+        protected internal IMongoDatabase GetContext()
         {
             var connection = new MongoUrlBuilder(this.configuration.DatabaseConnectionString);
             var client = new MongoClient(this.configuration.DatabaseConnectionString);

@@ -119,6 +119,13 @@ namespace OnlineStore.CartService.BusinessLogicLayer
             {
                 throw new ArgumentException(nameof(item.Name));
             }
+
+            var isImageUrlProvided = !string.IsNullOrEmpty(item.ImageUrl);
+
+            if (isImageUrlProvided && !Uri.IsWellFormedUriString(item.ImageUrl, UriKind.Absolute))
+            {
+                throw new UriFormatException(nameof(item.ImageUrl));
+            }
         }
     }
 }

@@ -12,6 +12,8 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence.Configurations
         /// <inheritdoc/>
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.ToTable(nameof(Product));
+
             builder.HasKey(p => p.Id);
 
             builder.Property(p => p.Name)

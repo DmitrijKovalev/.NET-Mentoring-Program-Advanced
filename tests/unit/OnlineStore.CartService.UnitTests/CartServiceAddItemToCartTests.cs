@@ -89,11 +89,11 @@ namespace OnlineStore.CartService.UnitTests
         }
 
         [Fact]
-        public async Task GivenAddItemToCart_WhenItemPriceIsNotSpecified_ShouldThrowException()
+        public async Task GivenAddItemToCart_WhenItemPriceIsBellowZero_ShouldThrowException()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();
-            var cartItem = new CartItem { Id = 1, Name = "Magazine", Quantity = 1 };
+            var cartItem = new CartItem { Id = 1, Name = "Magazine", Quantity = 1, Price = -10 };
             var cartRepository = new Mock<ICartRepository>();
             var cartService = new BusinessLogicLayer.CartService(cartRepository.Object);
 

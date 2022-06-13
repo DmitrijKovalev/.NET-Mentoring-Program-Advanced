@@ -58,11 +58,17 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
     <Folder Include="ForeignKeys" />
+    <Folder Include="Snapshots" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Category.sql" />
     <Build Include="Tables\Product.sql" />
     <Build Include="ForeignKeys\FK_Product_Category.sql" />
     <Build Include="ForeignKeys\FK_Category_ParentCategory.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Snapshots\OnlineStore.CatalogService.Database.dacpac">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

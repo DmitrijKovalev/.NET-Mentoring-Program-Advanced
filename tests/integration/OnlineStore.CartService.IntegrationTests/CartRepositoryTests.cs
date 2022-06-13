@@ -15,6 +15,8 @@ namespace OnlineStore.CartService.IntegrationTests
         private readonly CartServiceConfiguration configuration;
         private readonly MongoHelperRepository mongoHelperRepository;
 
+        private bool disposed = false;
+
         public CartRepositoryTests(MongoDatabaseFixture mongoDatabaseFixture)
         {
             this.configuration = new CartServiceConfiguration
@@ -154,7 +156,21 @@ namespace OnlineStore.CartService.IntegrationTests
 
         public void Dispose()
         {
-            this.mongoHelperRepository.GetContext().DropCollection(this.mongoHelperRepository.CartCollectionName);
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    this.mongoHelperRepository.GetContext().DropCollection(this.mongoHelperRepository.CartCollectionName);
+                }
+            }
+
+            this.disposed = true;
         }
     }
 }

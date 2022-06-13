@@ -5,14 +5,14 @@ using Microsoft.Extensions.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CartService.IntegrationTests
+namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests
 {
     [ExcludeFromCodeCoverage]
-    public class MongoDatabaseFixture : IAsyncLifetime
+    public class Fixture : IAsyncLifetime
     {
         private const string ConfigurationFileName = "appsettings.json";
 
-        public MongoDatabaseFixture()
+        public Fixture()
         {
             var options = new ConfigurationBuilder()
                .SetBasePath(Directory.GetCurrentDirectory())
@@ -24,9 +24,11 @@ namespace OnlineStore.CartService.IntegrationTests
             if (this.Configuration.UseDocker)
             {
                 this.Container = new TestcontainersBuilder<TestcontainersContainer>()
-                    .WithImage("mongo:latest")
-                    .WithName("mongo_integration_test")
-                    .WithPortBinding(27017)
+                    .WithImage("mcr.microsoft.com/mssql/server:2017-latest")
+                    .WithName("ms_sql_integration_test")
+                    .WithPortBinding(1433)
+                    .WithEnvironment("SA_PASSWORD", "9QW0A0P6rIaB")
+                    .WithEnvironment("ACCEPT_EULA", "Y")
                     .Build();
             }
         }

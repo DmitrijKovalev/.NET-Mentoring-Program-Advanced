@@ -7,7 +7,7 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence.Configurations
     /// <summary>
     /// Product entity configuration.
     /// </summary>
-    public class ProductConfiguration : IEntityTypeConfiguration<Product>
+    internal class ProductConfiguration : IEntityTypeConfiguration<Product>
     {
         /// <inheritdoc/>
         public void Configure(EntityTypeBuilder<Product> builder)

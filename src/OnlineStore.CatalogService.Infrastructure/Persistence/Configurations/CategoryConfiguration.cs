@@ -7,7 +7,7 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence.Configurations
     /// <summary>
     /// Category entity configuration.
     /// </summary>
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         /// <inheritdoc/>
         public void Configure(EntityTypeBuilder<Category> builder)

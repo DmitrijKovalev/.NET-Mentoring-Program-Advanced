@@ -1,49 +1,25 @@
-﻿using FluentAssertions;
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using Microsoft.SqlServer.Dac;
-using OnlineStore.CatalogService.Domain.Entities;
+using OnlineStore.CatalogService.Infrastructure.IntegrationTests.TestsFixture;
 using OnlineStore.CatalogService.Infrastructure.Persistence;
-using Shouldly;
 using System.Diagnostics.CodeAnalysis;
-using Xunit;
 
 namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests
 {
     [ExcludeFromCodeCoverage]
-    [Collection(nameof(FixtureCollection))]
-    public class EfRepositoryTests : IDisposable
+    public class RepositoyTestsBase : IDisposable
     {
         private const string DacPacPath = @"src\OnlineStore.CatalogService.Database\Snapshots\OnlineStore.CatalogService.Database.dacpac";
 
-        private readonly AppDataBaseFactory dataBaseFactory;
-
         private bool disposed = false;
 
-        public EfRepositoryTests(Fixture fixture)
+        public RepositoyTestsBase(Fixture fixture)
         {
-            this.dataBaseFactory = new AppDataBaseFactory(fixture.Configuration.DatabaseConnectionString);
+            this.DataBaseFactory = new AppDataBaseFactory(fixture.Configuration.DatabaseConnectionString);
             this.PublishDatabase(fixture.Configuration.DatabaseConnectionString);
         }
 
-        [Fact]
-        public async Task GivenInsertCategory_WhenCategoryParentIdIsNull_ShouldInsertCategorySuccessfully()
-        {
-            // Arrange
-            var categoryRepository = new EfRepository<Category>(this.dataBaseFactory);
-            var category = new Category
-            {
-                Name = "New Category",
-            };
-
-            // Act
-            await categoryRepository.InsertAsync(category);
-            var insertedCategory = await categoryRepository.GetByIdAsync(category.Id);
-            var countOfCategories = categoryRepository.GetAll().ToList().Count;
-
-            // Assert
-            insertedCategory.Should().BeEquivalentTo(category);
-            countOfCategories.ShouldBe(1);
-        }
+        protected AppDataBaseFactory DataBaseFactory { get; }
 
         public void Dispose()
         {
@@ -57,7 +33,7 @@ namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests
             {
                 if (disposing)
                 {
-                    this.dataBaseFactory.CreateNewInstance().Database.EnsureDeleted();
+                    this.DataBaseFactory.CreateNewInstance().Database.EnsureDeleted();
                 }
             }
 

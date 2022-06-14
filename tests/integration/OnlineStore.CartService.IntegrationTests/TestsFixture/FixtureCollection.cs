@@ -1,14 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CartService.IntegrationTests
+namespace OnlineStore.CartService.IntegrationTests.TestsFixture
 {
     /// <summary>
     /// Collection defined to share fixture among tests in several test classes.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    [CollectionDefinition(nameof(MongoDatabaseFixtureCollection))]
-    public class MongoDatabaseFixtureCollection : ICollectionFixture<MongoDatabaseFixture>
+    [CollectionDefinition(nameof(FixtureCollection))]
+    public class FixtureCollection : ICollectionFixture<Fixture>
     {
         // This class has no code, and is never created. Its purpose is simply
         // to be the place to apply [CollectionDefinition] and all the

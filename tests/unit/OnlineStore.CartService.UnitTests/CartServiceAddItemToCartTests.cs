@@ -152,7 +152,7 @@ namespace OnlineStore.CartService.UnitTests
         }
 
         [Fact]
-        public async Task GivenAddItemToCart_WhenCartWithThisItemAlreadyExist_ShouldUpdateQuantitySuccessfully()
+        public async Task GivenAddItemToCart_WhenCartWithThisItemAlreadyExists_ShouldUpdateQuantitySuccessfully()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();
@@ -187,7 +187,7 @@ namespace OnlineStore.CartService.UnitTests
         }
 
         [Fact]
-        public async Task GivenAddItemToCart_WhenCartExistWithoutThisItem_ShouldAddItemToCartSuccessfully()
+        public async Task GivenAddItemToCart_WhenCartExistsWithoutThisItem_ShouldAddItemToCartSuccessfully()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();

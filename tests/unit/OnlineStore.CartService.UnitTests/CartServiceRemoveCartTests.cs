@@ -60,7 +60,7 @@ namespace OnlineStore.CartService.UnitTests
         }
 
         [Fact]
-        public async Task GivenRemoveCart_WhenCartExist_ShouldDeleteCartSuccessfully()
+        public async Task GivenRemoveCart_WhenCartExists_ShouldDeleteCartSuccessfully()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();

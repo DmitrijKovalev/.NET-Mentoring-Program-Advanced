@@ -1,4 +1,4 @@
-﻿namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests
+﻿namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests.Common
 {
     public class Configuration
     {

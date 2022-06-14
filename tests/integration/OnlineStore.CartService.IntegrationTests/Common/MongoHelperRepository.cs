@@ -4,7 +4,7 @@ using OnlineStore.CartService.Core.Models.Configuration;
 using OnlineStore.CartService.DataAccessLayer;
 using System.Diagnostics.CodeAnalysis;
 
-namespace OnlineStore.CartService.IntegrationTests
+namespace OnlineStore.CartService.IntegrationTests.Common
 {
     [ExcludeFromCodeCoverage]
     public class MongoHelperRepository : BaseRepository

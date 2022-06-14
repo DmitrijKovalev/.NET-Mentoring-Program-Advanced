@@ -1,4 +1,4 @@
-﻿namespace OnlineStore.CartService.IntegrationTests
+﻿namespace OnlineStore.CartService.IntegrationTests.Common
 {
     public class Configuration
     {

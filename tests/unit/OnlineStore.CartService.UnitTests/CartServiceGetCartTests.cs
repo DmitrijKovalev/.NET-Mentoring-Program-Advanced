@@ -62,7 +62,7 @@ namespace OnlineStore.CartService.UnitTests
         }
 
         [Fact]
-        public async Task GivenGetCart_WhenCartExist_ShouldReturnsCart()
+        public async Task GivenGetCart_WhenCartExists_ShouldReturnsCart()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();

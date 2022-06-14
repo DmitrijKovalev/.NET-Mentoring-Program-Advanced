@@ -2,6 +2,8 @@
 using OnlineStore.CartService.Core.Models;
 using OnlineStore.CartService.Core.Models.Configuration;
 using OnlineStore.CartService.DataAccessLayer;
+using OnlineStore.CartService.IntegrationTests.Common;
+using OnlineStore.CartService.IntegrationTests.TestsFixture;
 using Shouldly;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
@@ -9,7 +11,7 @@ using Xunit;
 namespace OnlineStore.CartService.IntegrationTests
 {
     [ExcludeFromCodeCoverage]
-    [Collection(nameof(MongoDatabaseFixtureCollection))]
+    [Collection(nameof(FixtureCollection))]
     public class CartRepositoryTests : IDisposable
     {
         private readonly CartServiceConfiguration configuration;
@@ -17,7 +19,7 @@ namespace OnlineStore.CartService.IntegrationTests
 
         private bool disposed = false;
 
-        public CartRepositoryTests(MongoDatabaseFixture mongoDatabaseFixture)
+        public CartRepositoryTests(Fixture mongoDatabaseFixture)
         {
             this.configuration = new CartServiceConfiguration
             {

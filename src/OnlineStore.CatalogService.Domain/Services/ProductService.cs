@@ -29,7 +29,7 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Product> GetAllProducts(Pagination pagination)
+        public IEnumerable<Product> GetAllProducts(Pagination pagination = null)
         {
             var products = this.productRepository.GetAll();
 

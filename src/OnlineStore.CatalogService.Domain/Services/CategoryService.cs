@@ -24,7 +24,7 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Category> GetAllCategories(Pagination pagination)
+        public IEnumerable<Category> GetAllCategories(Pagination pagination = null)
         {
             var categories = this.categoryRepository.GetAll();
 

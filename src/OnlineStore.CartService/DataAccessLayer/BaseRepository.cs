@@ -5,7 +5,7 @@ using OnlineStore.CartService.Core.Models.Configuration;
 namespace OnlineStore.CartService.DataAccessLayer
 {
     /// <summary>
-    /// Mobgo DB base repository.
+    /// Mongo DB base repository.
     /// </summary>
     public class BaseRepository
     {
@@ -36,7 +36,7 @@ namespace OnlineStore.CartService.DataAccessLayer
         /// <value>
         /// <placeholder>Cart collection name.</placeholder>
         /// </value>
-        protected internal string CartCollectionName => nameof(Cart);
+        public string CartCollectionName => nameof(Cart);
 
         /// <summary>
         /// Gets cart collection.
@@ -44,13 +44,13 @@ namespace OnlineStore.CartService.DataAccessLayer
         /// <value>
         /// <placeholder>Cart collection.</placeholder>
         /// </value>
-        protected internal IMongoCollection<Cart> CartCollection => this.GetContext().GetCollection<Cart>(this.CartCollectionName);
+        public IMongoCollection<Cart> CartCollection => this.GetContext().GetCollection<Cart>(this.CartCollectionName);
 
         /// <summary>
         /// Gets database context.
         /// </summary>
         /// <returns>Database context.</returns>
-        protected internal IMongoDatabase GetContext()
+        public IMongoDatabase GetContext()
         {
             var connection = new MongoUrlBuilder(this.configuration.DatabaseConnectionString);
             var client = new MongoClient(this.configuration.DatabaseConnectionString);

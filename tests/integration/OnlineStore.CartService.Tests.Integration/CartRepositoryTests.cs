@@ -2,13 +2,13 @@
 using OnlineStore.CartService.Core.Models;
 using OnlineStore.CartService.Core.Models.Configuration;
 using OnlineStore.CartService.DataAccessLayer;
-using OnlineStore.CartService.IntegrationTests.Common;
-using OnlineStore.CartService.IntegrationTests.TestsFixture;
+using OnlineStore.CartService.Tests.Integration.Common;
+using OnlineStore.CartService.Tests.Integration.TestsFixture;
 using Shouldly;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CartService.IntegrationTests
+namespace OnlineStore.CartService.Tests.Integration
 {
     [ExcludeFromCodeCoverage]
     [Collection(nameof(FixtureCollection))]

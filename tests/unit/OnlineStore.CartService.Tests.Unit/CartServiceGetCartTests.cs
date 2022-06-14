@@ -5,43 +5,43 @@ using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using OnlineStore.CartService.Core.Exceptions;
 using Shouldly;
-using OnlineStore.CartService.UnitTests.Data;
+using OnlineStore.CartService.Tests.Unit.Data;
 
-namespace OnlineStore.CartService.UnitTests
+namespace OnlineStore.CartService.Tests.Unit
 {
     [ExcludeFromCodeCoverage]
-    public class CartServiceRemoveCartTests
+    public class CartServiceGetCartTests
     {
         [Fact]
-        public async Task GivenRemoveCart_WhenCartIdIsNull_ShouldThrowException()
+        public async Task GivenGetCart_WhenCartIdIsNull_ShouldThrowException()
         {
             // Arrange
             var cartRepository = new Mock<ICartRepository>();
             var cartService = new BusinessLogicLayer.CartService(cartRepository.Object);
 
             // Act
-            var action = () => cartService.RemoveCartAsync(null);
+            var action = () => cartService.GetCartByIdAsync(null);
 
             // Assert
             await Should.ThrowAsync<ArgumentNullException>(action);
         }
 
         [Fact]
-        public async Task GivenRemoveCart_WhenCartIdIsEmpty_ShouldThrowException()
+        public async Task GivenGetCart_WhenCartIdIsEmpty_ShouldThrowException()
         {
             // Arrange
             var cartRepository = new Mock<ICartRepository>();
             var cartService = new BusinessLogicLayer.CartService(cartRepository.Object);
 
             // Act
-            var action = () => cartService.RemoveCartAsync(string.Empty);
+            var action = () => cartService.GetCartByIdAsync(string.Empty);
 
             // Assert
             await Should.ThrowAsync<ArgumentNullException>(action);
         }
 
         [Fact]
-        public async Task GivenRemoveCart_WhenCartDoesNotExist_ShouldThrowException()
+        public async Task GivenGetCart_WhenCartDoesNotExist_ShouldThrowException()
         {
             // Arrange
             var cartRepository = new Mock<ICartRepository>();
@@ -50,33 +50,36 @@ namespace OnlineStore.CartService.UnitTests
                 .Returns(Task.FromResult<Cart>(null))
                 .Verifiable();
             var cartId = Guid.NewGuid().ToString();
+            var expectedExceptionMessage = $"Cart Not Found. Cart Id: {cartId}.";
             var cartService = new BusinessLogicLayer.CartService(cartRepository.Object);
 
             // Act
-            var action = () => cartService.RemoveCartAsync(cartId);
+            var action = () => cartService.GetCartByIdAsync(cartId);
 
             // Assert
-            await Should.ThrowAsync<CartNotFoundException>(action);
+            var exception = await Should.ThrowAsync<CartNotFoundException>(action);
+            exception.Message.ShouldBe(expectedExceptionMessage);
         }
 
         [Fact]
-        public async Task GivenRemoveCart_WhenCartExists_ShouldDeleteCartSuccessfully()
+        public async Task GivenGetCart_WhenCartExists_ShouldReturnsCart()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();
-            var cart = CartServiceTestsData.GetEmptyCart(cartId);
+            var cart = CartServiceTestsData.GetCart(cartId);
             var cartRepository = new Mock<ICartRepository>();
             cartRepository
                 .Setup(repository => repository.GetCartByIdAsync(It.IsAny<string>()))
                 .Returns(Task.FromResult(cart))
                 .Verifiable();
+
             var cartService = new BusinessLogicLayer.CartService(cartRepository.Object);
 
             // Act
-            await cartService.RemoveCartAsync(cartId);
+            var returnedCart = await cartService.GetCartByIdAsync(cartId);
 
             // Assert
-            cartRepository.Verify(repository => repository.DeleteCartByIdAsync(cartId), Times.Once());
+            returnedCart.ShouldBeSameAs(cart);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CartService.IntegrationTests.TestsFixture
+namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture
 {
     /// <summary>
     /// Collection defined to share fixture among tests in several test classes.

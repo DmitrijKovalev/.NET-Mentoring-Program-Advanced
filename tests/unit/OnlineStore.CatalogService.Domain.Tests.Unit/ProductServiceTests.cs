@@ -9,7 +9,7 @@ using Shouldly;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CatalogService.Domain.UnitTests
+namespace OnlineStore.CatalogService.Domain.Tests.Unit
 {
     [ExcludeFromCodeCoverage]
     public class ProductServiceTests

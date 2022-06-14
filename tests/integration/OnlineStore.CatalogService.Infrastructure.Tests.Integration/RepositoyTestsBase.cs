@@ -1,10 +1,10 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.SqlServer.Dac;
-using OnlineStore.CatalogService.Infrastructure.IntegrationTests.TestsFixture;
+using OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture;
 using OnlineStore.CatalogService.Infrastructure.Persistence;
 using System.Diagnostics.CodeAnalysis;
 
-namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests
+namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration
 {
     [ExcludeFromCodeCoverage]
     public class RepositoyTestsBase : IDisposable

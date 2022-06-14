@@ -18,11 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "integration", "integration", "{79CAD1E4-F95F-4F6D-B9F5-0A937693261D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.IntegrationTests", "tests\integration\OnlineStore.CartService.IntegrationTests\OnlineStore.CartService.IntegrationTests.csproj", "{B39221D5-6C44-4EA0-B24F-178813CAFA32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.Tests.Integration", "tests\integration\OnlineStore.CartService.Tests.Integration\OnlineStore.CartService.Tests.Integration.csproj", "{B39221D5-6C44-4EA0-B24F-178813CAFA32}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit", "unit", "{CE1CFA07-8976-474E-B5F3-C49BCC71C86C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.UnitTests", "tests\unit\OnlineStore.CartService.UnitTests\OnlineStore.CartService.UnitTests.csproj", "{49AE899A-7394-41F7-AB44-2DAF242FD57C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.Tests.Unit", "tests\unit\OnlineStore.CartService.Tests.Unit\OnlineStore.CartService.Tests.Unit.csproj", "{49AE899A-7394-41F7-AB44-2DAF242FD57C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.Domain", "src\OnlineStore.CatalogService.Domain\OnlineStore.CatalogService.Domain.csproj", "{199B4A63-AA78-4D9B-A136-87075AF7C164}"
 EndProject
@@ -30,9 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OnlineStore.CatalogService.Database", "src\OnlineStore.CatalogService.Database\OnlineStore.CatalogService.Database.sqlproj", "{083353E2-226A-4AAB-90FF-7589F48A68FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.Infrastructure.IntegrationTests", "tests\integration\OnlineStore.CatalogService.Infrastructure.IntegrationTests\OnlineStore.CatalogService.Infrastructure.IntegrationTests.csproj", "{EA1BE3B5-A461-4880-82C2-61022C27EB8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.Infrastructure.Tests.Integration", "tests\integration\OnlineStore.CatalogService.Infrastructure.Tests.Integration\OnlineStore.CatalogService.Infrastructure.Tests.Integration.csproj", "{EA1BE3B5-A461-4880-82C2-61022C27EB8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CatalogService.Domain.UnitTests", "tests\unit\OnlineStore.CatalogService.Domain.UnitTests\OnlineStore.CatalogService.Domain.UnitTests.csproj", "{0CC30BE5-6D92-479B-984A-58F7102DC43F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.Domain.Tests.Unit", "tests\unit\OnlineStore.CatalogService.Domain.Tests.Unit\OnlineStore.CatalogService.Domain.Tests.Unit.csproj", "{0CC30BE5-6D92-479B-984A-58F7102DC43F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

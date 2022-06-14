@@ -5,9 +5,9 @@ using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using OnlineStore.CartService.Core.Exceptions;
 using Shouldly;
-using OnlineStore.CartService.UnitTests.Data;
+using OnlineStore.CartService.Tests.Unit.Data;
 
-namespace OnlineStore.CartService.UnitTests
+namespace OnlineStore.CartService.Tests.Unit
 {
     [ExcludeFromCodeCoverage]
     public class CartServiceRemoveItemFromCartTests

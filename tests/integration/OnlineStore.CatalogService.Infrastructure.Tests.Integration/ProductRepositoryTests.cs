@@ -2,13 +2,13 @@
 using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using OnlineStore.CatalogService.Domain.Entities;
-using OnlineStore.CatalogService.Infrastructure.IntegrationTests.TestsFixture;
+using OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture;
 using OnlineStore.CatalogService.Infrastructure.Persistence;
 using Shouldly;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CatalogService.Infrastructure.IntegrationTests
+namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration
 {
     [ExcludeFromCodeCoverage]
     [Collection(nameof(FixtureCollection))]

@@ -1,7 +1,7 @@
 ﻿using OnlineStore.CartService.Core.Models;
 using System.Diagnostics.CodeAnalysis;
 
-namespace OnlineStore.CartService.UnitTests.Data
+namespace OnlineStore.CartService.Tests.Unit.Data
 {
     [ExcludeFromCodeCoverage]
     public static class CartServiceTestsData

@@ -2,11 +2,11 @@
 using DotNet.Testcontainers.Containers.Builders;
 using DotNet.Testcontainers.Containers.Modules;
 using Microsoft.Extensions.Configuration;
-using OnlineStore.CartService.IntegrationTests.Common;
+using OnlineStore.CatalogService.Infrastructure.Tests.Integration.Common;
 using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
-namespace OnlineStore.CartService.IntegrationTests.TestsFixture
+namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture
 {
     [ExcludeFromCodeCoverage]
     public class Fixture : IAsyncLifetime
@@ -25,9 +25,11 @@ namespace OnlineStore.CartService.IntegrationTests.TestsFixture
             if (this.Configuration.UseDocker)
             {
                 this.Container = new TestcontainersBuilder<TestcontainersContainer>()
-                    .WithImage("mongo:latest")
-                    .WithName("mongo_integration_test")
-                    .WithPortBinding(27017)
+                    .WithImage("mcr.microsoft.com/mssql/server:2017-latest")
+                    .WithName("ms_sql_integration_test")
+                    .WithPortBinding(1433)
+                    .WithEnvironment("SA_PASSWORD", "9QW0A0P6rIaB")
+                    .WithEnvironment("ACCEPT_EULA", "Y")
                     .Build();
             }
         }

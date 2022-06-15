@@ -1,7 +1,6 @@
 ﻿using dotNetTips.Utility.Standard.Tester;
 using Moq;
 using OnlineStore.CatalogService.Domain.Common.Exceptions;
-using OnlineStore.CatalogService.Domain.Common.Models;
 using OnlineStore.CatalogService.Domain.Entities;
 using OnlineStore.CatalogService.Domain.Interfaces;
 using OnlineStore.CatalogService.Domain.Services;
@@ -35,36 +34,6 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
 
             // Assert
             returnedProducts.ShouldBeEquivalentTo(expectedProducts.ToList());
-        }
-
-        [Fact]
-        public void GivenGetAllProducts_WhenPaginationIsNotNull_ShouldReturnProducts()
-        {
-            // Arrange
-            var pagination = new Pagination(2, 1);
-            var categoryRepository = new Mock<IRepository<Category>>();
-            var productRepository = new Mock<IRepository<Product>>();
-            var allProducts = new List<Product>
-            {
-                new Product { Id = 1, Name = "One" },
-                new Product { Id = 2, Name = "Two" },
-                new Product { Id = 3, Name = "Three" },
-            }.AsQueryable();
-
-            var expectedProduct = allProducts
-                .Skip(pagination.SkipCount)
-                .Take(pagination.PageSize)
-                .ToList();
-
-            productRepository.Setup(repository => repository.GetAll()).Returns(allProducts);
-
-            var service = new ProductService(productRepository.Object, categoryRepository.Object);
-
-            // Act
-            var returnedProducts = service.GetAllProducts(pagination);
-
-            // Assert
-            returnedProducts.ShouldBeEquivalentTo(expectedProduct);
         }
 
         [Fact]

@@ -1,5 +1,4 @@
 ﻿using OnlineStore.CatalogService.Domain.Common.Exceptions;
-using OnlineStore.CatalogService.Domain.Common.Models;
 using OnlineStore.CatalogService.Domain.Entities;
 using OnlineStore.CatalogService.Domain.Interfaces;
 
@@ -24,18 +23,9 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Category> GetAllCategories(Pagination pagination = null)
+        public IEnumerable<Category> GetAllCategories()
         {
-            var categories = this.categoryRepository.GetAll();
-
-            if (pagination is not null)
-            {
-                categories = categories
-                    .Skip(pagination.SkipCount)
-                    .Take(pagination.PageSize);
-            }
-
-            return categories.ToList();
+            return this.categoryRepository.GetAll().ToList();
         }
 
         /// <inheritdoc/>

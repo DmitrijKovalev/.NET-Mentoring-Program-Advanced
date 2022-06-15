@@ -1,5 +1,4 @@
-﻿using OnlineStore.CatalogService.Domain.Common.Models;
-using OnlineStore.CatalogService.Domain.Entities;
+﻿using OnlineStore.CatalogService.Domain.Entities;
 
 namespace OnlineStore.CatalogService.Domain.Interfaces
 {
@@ -11,9 +10,8 @@ namespace OnlineStore.CatalogService.Domain.Interfaces
         /// <summary>
         /// Get all categories.
         /// </summary>
-        /// <param name="pagination">Pagination model.</param>
         /// <returns>List of categories.</returns>
-        public IEnumerable<Category> GetAllCategories(Pagination pagination);
+        public IEnumerable<Category> GetAllCategories();
 
         /// <summary>
         /// Get category by Id.

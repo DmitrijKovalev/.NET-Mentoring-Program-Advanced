@@ -1,5 +1,4 @@
 ﻿using OnlineStore.CatalogService.Domain.Common.Exceptions;
-using OnlineStore.CatalogService.Domain.Common.Models;
 using OnlineStore.CatalogService.Domain.Entities;
 using OnlineStore.CatalogService.Domain.Interfaces;
 
@@ -29,18 +28,9 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Product> GetAllProducts(Pagination pagination = null)
+        public IEnumerable<Product> GetAllProducts()
         {
-            var products = this.productRepository.GetAll();
-
-            if (pagination is not null)
-            {
-                products = products
-                    .Skip(pagination.SkipCount)
-                    .Take(pagination.PageSize);
-            }
-
-            return products.ToList();
+            return this.productRepository.GetAll().ToList();
         }
 
         /// <inheritdoc/>
@@ -50,20 +40,13 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId, Pagination pagination)
+        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId)
         {
             var category = await this.GetCategoryInternalAsync(categoryId);
 
             var products = this.productRepository
                 .GetAll()
                 .Where(product => product.CategoryId == category.Id);
-
-            if (pagination is not null)
-            {
-                products = products
-                    .Skip(pagination.SkipCount)
-                    .Take(pagination.PageSize);
-            }
 
             return products.ToList();
         }

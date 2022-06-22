@@ -2,11 +2,9 @@
 using Microsoft.SqlServer.Dac;
 using OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture;
 using OnlineStore.CatalogService.Infrastructure.Persistence;
-using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration
 {
-    [ExcludeFromCodeCoverage]
     public class RepositoyTestsBase : IDisposable
     {
         private const string DacPacPath = @"src\OnlineStore.CatalogService.Database\Snapshots\OnlineStore.CatalogService.Database.dacpac";

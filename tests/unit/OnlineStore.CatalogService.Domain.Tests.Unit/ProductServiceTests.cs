@@ -5,12 +5,10 @@ using OnlineStore.CatalogService.Domain.Entities;
 using OnlineStore.CatalogService.Domain.Interfaces;
 using OnlineStore.CatalogService.Domain.Services;
 using Shouldly;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace OnlineStore.CatalogService.Domain.Tests.Unit
 {
-    [ExcludeFromCodeCoverage]
     public class ProductServiceTests
     {
         [Fact]

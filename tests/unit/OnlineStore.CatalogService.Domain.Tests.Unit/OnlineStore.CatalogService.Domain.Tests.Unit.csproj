@@ -29,4 +29,8 @@
     <ProjectReference Include="..\..\..\src\OnlineStore.CatalogService.Domain\OnlineStore.CatalogService.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+  </ItemGroup>
+
 </Project>

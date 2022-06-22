@@ -2,31 +2,17 @@
 using OnlineStore.CartService.Core.Models;
 using OnlineStore.CartService.Core.Models.Configuration;
 using OnlineStore.CartService.DataAccessLayer;
-using OnlineStore.CartService.Tests.Integration.Common;
 using OnlineStore.CartService.Tests.Integration.TestsFixture;
 using Shouldly;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace OnlineStore.CartService.Tests.Integration
 {
-    [ExcludeFromCodeCoverage]
     [Collection(nameof(FixtureCollection))]
-    public class CartRepositoryTests : IDisposable
+    public class CartRepositoryTests : RepositoryTestsBase
     {
-        private readonly CartServiceConfiguration configuration;
-        private readonly MongoHelperRepository mongoHelperRepository;
-
-        private bool disposed = false;
-
-        public CartRepositoryTests(Fixture mongoDatabaseFixture)
+        public CartRepositoryTests(Fixture mongoDatabaseFixture) : base(mongoDatabaseFixture)
         {
-            this.configuration = new CartServiceConfiguration
-            {
-                DatabaseConnectionString = mongoDatabaseFixture.Configuration.DatabaseConnectionString,
-            };
-
-            this.mongoHelperRepository = new MongoHelperRepository(this.configuration);
         }
 
         [Fact]
@@ -73,12 +59,12 @@ namespace OnlineStore.CartService.Tests.Integration
                 },
             };
 
-            var cartRepository = new CartRepository(this.configuration);
+            var cartRepository = new CartRepository(this.Configuration);
 
             // Act
             await cartRepository.CreateCartAsync(cart);
             var returnedCart = await cartRepository.GetCartByIdAsync(cartId);
-            var countDocuments = this.mongoHelperRepository.CartCollection.CountDocuments(this.mongoHelperRepository.EmptyFilter);
+            var countDocuments = this.MongoHelperRepository.CartCollection.CountDocuments(this.MongoHelperRepository.EmptyFilter);
 
             // Assert
             returnedCart.Should().BeEquivalentTo(cart);
@@ -101,14 +87,14 @@ namespace OnlineStore.CartService.Tests.Integration
                 },
             };
 
-            var cartRepository = new CartRepository(this.configuration);
+            var cartRepository = new CartRepository(this.Configuration);
 
             // Act
             await cartRepository.CreateCartAsync(cart);
             cart.CartItems.Clear();
             await cartRepository.UpdateCartAsync(cart);
             var returnedCart = await cartRepository.GetCartByIdAsync(cartId);
-            var countDocuments = this.mongoHelperRepository.CartCollection.CountDocuments(this.mongoHelperRepository.EmptyFilter);
+            var countDocuments = this.MongoHelperRepository.CartCollection.CountDocuments(this.MongoHelperRepository.EmptyFilter);
 
             // Assert
             returnedCart.Should().BeEquivalentTo(cart);
@@ -142,37 +128,18 @@ namespace OnlineStore.CartService.Tests.Integration
                 },
             };
 
-            var cartRepository = new CartRepository(this.configuration);
+            var cartRepository = new CartRepository(this.Configuration);
 
             // Act
             await cartRepository.CreateCartAsync(existedCart);
             await cartRepository.CreateCartAsync(cartToDelete);
             await cartRepository.DeleteCartByIdAsync(cartIdTodelete);
             var returnedCart = await cartRepository.GetCartByIdAsync(cartIdTodelete);
-            var countDocuments = this.mongoHelperRepository.CartCollection.CountDocuments(this.mongoHelperRepository.EmptyFilter);
+            var countDocuments = this.MongoHelperRepository.CartCollection.CountDocuments(this.MongoHelperRepository.EmptyFilter);
 
             // Assert
             returnedCart.Should().BeNull();
             countDocuments.ShouldBe(1);
-        }
-
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!this.disposed)
-            {
-                if (disposing)
-                {
-                    this.mongoHelperRepository.GetContext().DropCollection(this.mongoHelperRepository.CartCollectionName);
-                }
-            }
-
-            this.disposed = true;
         }
     }
 }

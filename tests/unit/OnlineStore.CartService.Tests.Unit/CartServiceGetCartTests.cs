@@ -1,7 +1,6 @@
 ﻿using Moq;
 using OnlineStore.CartService.Core.Interfaces;
 using OnlineStore.CartService.Core.Models;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 using OnlineStore.CartService.Core.Exceptions;
 using Shouldly;
@@ -9,7 +8,6 @@ using OnlineStore.CartService.Tests.Unit.Data;
 
 namespace OnlineStore.CartService.Tests.Unit
 {
-    [ExcludeFromCodeCoverage]
     public class CartServiceGetCartTests
     {
         [Fact]

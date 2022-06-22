@@ -1,12 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Xunit;
+﻿using Xunit;
 
 namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture
 {
     /// <summary>
     /// Collection defined to share fixture among tests in several test classes.
     /// </summary>
-    [ExcludeFromCodeCoverage]
     [CollectionDefinition(nameof(FixtureCollection))]
     public class FixtureCollection : ICollectionFixture<Fixture>
     {

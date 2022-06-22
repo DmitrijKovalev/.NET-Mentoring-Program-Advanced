@@ -2,11 +2,9 @@
 using OnlineStore.CartService.Core.Models;
 using OnlineStore.CartService.Core.Models.Configuration;
 using OnlineStore.CartService.DataAccessLayer;
-using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineStore.CartService.Tests.Integration.Common
 {
-    [ExcludeFromCodeCoverage]
     public class MongoHelperRepository : BaseRepository
     {
         public MongoHelperRepository(CartServiceConfiguration configuration) : base(configuration)

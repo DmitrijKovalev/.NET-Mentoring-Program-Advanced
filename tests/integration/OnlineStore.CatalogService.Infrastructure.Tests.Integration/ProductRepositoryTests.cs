@@ -5,12 +5,10 @@ using OnlineStore.CatalogService.Domain.Entities;
 using OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture;
 using OnlineStore.CatalogService.Infrastructure.Persistence;
 using Shouldly;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration
 {
-    [ExcludeFromCodeCoverage]
     [Collection(nameof(FixtureCollection))]
     public class ProductRepositoryTests : RepositoyTestsBase
     {

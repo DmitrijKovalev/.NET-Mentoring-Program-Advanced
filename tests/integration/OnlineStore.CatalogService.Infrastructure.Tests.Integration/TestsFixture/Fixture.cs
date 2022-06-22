@@ -3,12 +3,10 @@ using DotNet.Testcontainers.Containers.Builders;
 using DotNet.Testcontainers.Containers.Modules;
 using Microsoft.Extensions.Configuration;
 using OnlineStore.CatalogService.Infrastructure.Tests.Integration.Common;
-using System.Diagnostics.CodeAnalysis;
 using Xunit;
 
 namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixture
 {
-    [ExcludeFromCodeCoverage]
     public class Fixture : IAsyncLifetime
     {
         private const string ConfigurationFileName = "appsettings.json";

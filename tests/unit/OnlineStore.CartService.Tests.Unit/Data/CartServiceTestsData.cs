@@ -1,9 +1,7 @@
 ﻿using OnlineStore.CartService.Core.Models;
-using System.Diagnostics.CodeAnalysis;
 
 namespace OnlineStore.CartService.Tests.Unit.Data
 {
-    [ExcludeFromCodeCoverage]
     public static class CartServiceTestsData
     {
         public static Cart GetEmptyCart(string cartId) => new ()

@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.Domain.Tests.Unit", "tests\unit\OnlineStore.CatalogService.Domain.Tests.Unit\OnlineStore.CatalogService.Domain.Tests.Unit.csproj", "{0CC30BE5-6D92-479B-984A-58F7102DC43F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CartService.WebApi", "src\OnlineStore.CartService.WebApi\OnlineStore.CartService.WebApi.csproj", "{613B74C7-F936-4734-9F09-26310FF14D22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{0CC30BE5-6D92-479B-984A-58F7102DC43F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CC30BE5-6D92-479B-984A-58F7102DC43F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CC30BE5-6D92-479B-984A-58F7102DC43F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613B74C7-F936-4734-9F09-26310FF14D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613B74C7-F936-4734-9F09-26310FF14D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613B74C7-F936-4734-9F09-26310FF14D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613B74C7-F936-4734-9F09-26310FF14D22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +95,7 @@ Global
 		{083353E2-226A-4AAB-90FF-7589F48A68FC} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
 		{EA1BE3B5-A461-4880-82C2-61022C27EB8A} = {79CAD1E4-F95F-4F6D-B9F5-0A937693261D}
 		{0CC30BE5-6D92-479B-984A-58F7102DC43F} = {CE1CFA07-8976-474E-B5F3-C49BCC71C86C}
+		{613B74C7-F936-4734-9F09-26310FF14D22} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49E3B142-884E-468D-95AB-D7319E4301CE}

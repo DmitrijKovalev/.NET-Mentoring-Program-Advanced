@@ -110,12 +110,12 @@ namespace OnlineStore.CartService.BusinessLogicLayer
                 throw new ArgumentException(nameof(item.Id));
             }
 
-            if (item.Price < 0)
+            if (item.Price <= 0)
             {
                 throw new ArgumentException("Price must be greater than or equal to zero");
             }
 
-            if (item.Quantity <= 0)
+            if (item.Quantity < 0)
             {
                 throw new ArgumentException("Quantity must be greater than zero");
             }

@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <SolutionDir Condition="$(SolutionDir) == ''">../../.</SolutionDir>
     <CodeAnalysisRuleSet>$(SolutionDir)\.stylecop\stylecop.ruleset</CodeAnalysisRuleSet>
     <AdditionalFiles>$(SolutionDir)\.stylecop\stylecop.json</AdditionalFiles>

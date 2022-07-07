@@ -31,7 +31,7 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
             var returnedProducts = service.GetAllProducts();
 
             // Assert
-            returnedProducts.ShouldBeEquivalentTo(expectedProducts.ToList());
+            returnedProducts.ShouldBeEquivalentTo(expectedProducts);
         }
 
         [Fact]

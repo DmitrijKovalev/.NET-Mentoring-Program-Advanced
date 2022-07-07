@@ -11,14 +11,7 @@ namespace OnlineStore.CatalogService.Domain.Interfaces
         /// Get all products.
         /// </summary>
         /// <returns>List of products.</returns>
-        public IEnumerable<Product> GetAllProducts();
-
-        /// <summary>
-        /// Get list of products by category Id.
-        /// </summary>
-        /// <param name="categoryId">The category Id.</param>
-        /// <returns>List of products.</returns>
-        public Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId);
+        public IQueryable<Product> GetAllProducts();
 
         /// <summary>
         /// Get product by Id.

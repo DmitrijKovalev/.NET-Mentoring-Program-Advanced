@@ -8,27 +8,27 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence
     /// </summary>
     public class AppDataBaseFactory : IAppDataBaseFactory
     {
-        private readonly string connectionString;
+        private readonly AppDataBaseConnectionConfiguration connectionConfiguration;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDataBaseFactory"/> class.
         /// </summary>
-        /// <param name="connectionString">Connection string.</param>
-        public AppDataBaseFactory(string connectionString)
+        /// <param name="connectionConfiguration">Connection configuration.</param>
+        public AppDataBaseFactory(AppDataBaseConnectionConfiguration connectionConfiguration)
         {
-            if (string.IsNullOrEmpty(connectionString))
+            if (connectionConfiguration is null)
             {
-                throw new ArgumentNullException(nameof(connectionString));
+                throw new ArgumentNullException(nameof(connectionConfiguration));
             }
 
-            this.connectionString = connectionString;
+            this.connectionConfiguration = connectionConfiguration;
         }
 
         /// <inheritdoc/>
         public AppDataBaseContext CreateNewInstance()
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDataBaseContext>()
-                .UseSqlServer(this.connectionString);
+                .UseSqlServer(this.connectionConfiguration.ConnectionString);
 
             return new AppDataBaseContext(optionsBuilder.Options);
         }

@@ -13,7 +13,10 @@ namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration
 
         public RepositoyTestsBase(Fixture fixture)
         {
-            this.DataBaseFactory = new AppDataBaseFactory(fixture.Configuration.DatabaseConnectionString);
+            this.DataBaseFactory = new AppDataBaseFactory(new AppDataBaseConnectionConfiguration
+            {
+                ConnectionString = fixture.Configuration.DatabaseConnectionString,
+            });
             this.PublishDatabase(fixture.Configuration.DatabaseConnectionString);
         }
 

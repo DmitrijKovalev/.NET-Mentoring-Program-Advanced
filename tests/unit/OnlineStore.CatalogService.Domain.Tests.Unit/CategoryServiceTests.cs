@@ -30,7 +30,7 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
             var returnedCategories = service.GetAllCategories();
 
             // Assert
-            returnedCategories.ShouldBeEquivalentTo(expectedCategories.ToList());
+            returnedCategories.ShouldBeEquivalentTo(expectedCategories);
         }
 
         [Fact]

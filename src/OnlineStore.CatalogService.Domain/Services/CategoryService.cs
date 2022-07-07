@@ -23,9 +23,9 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Category> GetAllCategories()
+        public IQueryable<Category> GetAllCategories()
         {
-            return this.categoryRepository.GetAll().ToList();
+            return this.categoryRepository.GetAll();
         }
 
         /// <inheritdoc/>

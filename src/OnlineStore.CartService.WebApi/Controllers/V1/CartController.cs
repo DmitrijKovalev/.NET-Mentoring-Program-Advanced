@@ -38,9 +38,9 @@ namespace OnlineStore.CartService.WebApi.Controllers.V1
         [Route("{cartId}")]
         public async Task<ActionResult<CartViewModel>> GetCartAsync([FromRoute] string cartId)
         {
-            var coreCart = await this.cartService.GetCartByIdAsync(cartId);
-            var cart = this.mapper.Map<CartViewModel>(coreCart);
-            return this.Ok(cart);
+            var cart = await this.cartService.GetCartByIdAsync(cartId);
+            var result = this.mapper.Map<CartViewModel>(cart);
+            return this.Ok(result);
         }
 
         /// <summary>

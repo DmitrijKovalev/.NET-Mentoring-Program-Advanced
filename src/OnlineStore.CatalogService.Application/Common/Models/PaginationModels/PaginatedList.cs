@@ -59,6 +59,6 @@
         /// <value>
         /// <placeholder>Total pages.</placeholder>
         /// </value>
-        public int TotalPages => (int)Math.Ceiling(this.TotalCount / (double)this.PageSize);
+        public int TotalPages => this.PageSize == default ? 1 : (int)Math.Ceiling(this.TotalCount / (double)this.PageSize);
     }
 }

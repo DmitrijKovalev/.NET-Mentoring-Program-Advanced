@@ -60,6 +60,13 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence
             await this.context.SaveChangesAsync();
         }
 
+        /// <inheritdoc/>
+        public async Task DeleteRangeAsync(TEntity[] entity)
+        {
+            this.dbset.RemoveRange(entity);
+            await this.context.SaveChangesAsync();
+        }
+
         /// <summary>
         /// Releases all resources.
         /// </summary>

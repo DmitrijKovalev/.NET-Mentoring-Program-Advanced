@@ -1,6 +1,7 @@
 ﻿using OnlineStore.CatalogService.Domain.Common.Exceptions;
 using OnlineStore.CatalogService.Domain.Entities;
 using OnlineStore.CatalogService.Domain.Interfaces;
+using System.Transactions;
 
 namespace OnlineStore.CatalogService.Domain.Services
 {
@@ -12,14 +13,19 @@ namespace OnlineStore.CatalogService.Domain.Services
         private const int MaxCategotyNameLength = 50;
 
         private readonly IRepository<Category> categoryRepository;
+        private readonly IRepository<Product> productRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CategoryService"/> class.
         /// </summary>
         /// <param name="categoryRepository">The category repository.</param>
-        public CategoryService(IRepository<Category> categoryRepository)
+        /// <param name="productRepository">The product repository.</param>
+        public CategoryService(
+            IRepository<Category> categoryRepository,
+            IRepository<Product> productRepository)
         {
             this.categoryRepository = categoryRepository;
+            this.productRepository = productRepository;
         }
 
         /// <inheritdoc/>
@@ -58,8 +64,23 @@ namespace OnlineStore.CatalogService.Domain.Services
         /// <inheritdoc/>
         public async Task DeleteCategoryAsync(int categoryId)
         {
-            var category = await this.GetCategoryInternalAsync(categoryId);
-            await this.categoryRepository.DeleteAsync(category);
+            using (var scope = new TransactionScope(TransactionScopeOption.Required, TransactionScopeAsyncFlowOption.Enabled))
+            {
+                var products = this.productRepository
+                    .GetAll()
+                    .Where(product => product.CategoryId == categoryId)
+                    .ToArray();
+                if (products.Any())
+                {
+                    await this.productRepository.DeleteRangeAsync(products);
+                }
+
+                var category = await this.GetCategoryInternalAsync(categoryId);
+
+                await this.RecursiveDeleteAsync(category);
+
+                scope.Complete();
+            }
         }
 
         private async Task<Category> GetCategoryInternalAsync(int categoryId)
@@ -107,6 +128,34 @@ namespace OnlineStore.CatalogService.Domain.Services
                     throw new CategoryNotFoundException();
                 }
             }
+        }
+
+        private async Task RecursiveDeleteAsync(Category category)
+        {
+            var childCategories = this.categoryRepository
+                .GetAll()
+                .Where(c => c.ParentCategoryId == category.Id)
+                .ToList();
+
+            if (childCategories.Any())
+            {
+                foreach (var childCategory in childCategories)
+                {
+                    var products = this.productRepository
+                        .GetAll()
+                        .Where(product => product.CategoryId == childCategory.Id)
+                        .ToArray();
+
+                    if (products.Any())
+                    {
+                        await this.productRepository.DeleteRangeAsync(products);
+                    }
+
+                    await this.RecursiveDeleteAsync(childCategory);
+                }
+            }
+
+            await this.categoryRepository.DeleteAsync(category);
         }
     }
 }

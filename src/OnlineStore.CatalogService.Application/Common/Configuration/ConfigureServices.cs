@@ -1,4 +1,4 @@
-﻿using FluentValidation;
+﻿using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineStore.CatalogService.Domain.Entities;
@@ -24,7 +24,10 @@ namespace OnlineStore.CatalogService.Application.Common.Configuration
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, AppSettings appSettings)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddFluentValidation(conf =>
+            {
+                conf.RegisterValidatorsFromAssembly(typeof(ConfigureServices).Assembly);
+            });
             services.AddMediatR(Assembly.GetExecutingAssembly());
 
             services.AddSingleton(new AppDataBaseConnectionConfiguration { ConnectionString = appSettings.DatabaseConnectionString });

@@ -13,7 +13,7 @@ namespace OnlineStore.CartService.WebApi.Configuration.Validation
         {
             if (!context.ModelState.IsValid)
             {
-                context.Result = new UnprocessableEntityObjectResult(context.ModelState);
+                context.Result = new BadRequestObjectResult(context.ModelState);
             }
         }
 

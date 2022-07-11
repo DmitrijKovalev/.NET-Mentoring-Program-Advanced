@@ -6,7 +6,7 @@
     public class ProductViewModel
     {
         /// <summary>
-        /// Gets or sets id.
+        /// Gets or sets id. Not used to create a category.
         /// </summary>
         /// <value>
         /// <placeholder>Id.</placeholder>

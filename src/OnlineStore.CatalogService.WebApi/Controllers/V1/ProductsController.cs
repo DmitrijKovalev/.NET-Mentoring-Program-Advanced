@@ -7,6 +7,7 @@ using OnlineStore.CatalogService.Application.Products.Commands.DeleteProducts;
 using OnlineStore.CatalogService.Application.Products.Commands.UpdateProduct;
 using OnlineStore.CatalogService.Application.Products.Queries.GetProductsByCategoryIdWithPagination;
 using OnlineStore.CatalogService.Application.ViewModels;
+using OnlineStore.CatalogService.WebApi.Models;
 
 namespace OnlineStore.CatalogService.WebApi.Controllers.V1
 {
@@ -32,21 +33,19 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V1
         /// <summary>
         /// Get list of products by category Id.
         /// </summary>
-        /// <param name="categoryId">The category Id.</param>
-        /// <param name="pageNumber">The page number.</param>
-        /// <param name="pageSize">The page size.</param>
+        /// <param name="queryParameters">The query parameters.</param>
         /// <returns>List of products.</returns>
         [HttpGet]
-        [Route("~/api/v1/categories/{categoryId}/[controller]")]
         public async Task<ActionResult<PaginatedList<ProductViewModel>>> GetProductsByCategoryIdAsync(
-            [FromRoute] int categoryId,
-            [FromQuery] int? pageNumber,
-            [FromQuery] int? pageSize)
+            [FromQuery] ProductsQueryParemeters queryParameters)
         {
             var query = new GetProductsByCategoryIdWithPaginationQuery
             {
-                CategoeyId = categoryId,
+                CategoeyId = queryParameters.CategoryId,
             };
+
+            var pageNumber = queryParameters?.PageNumber;
+            var pageSize = queryParameters?.PageSize;
 
             if (pageNumber is not null && pageSize is not null)
             {

@@ -5,14 +5,15 @@ using OnlineStore.CartService.Core.Models;
 using OnlineStore.CartService.WebApi.Configuration.Validation;
 using OnlineStore.CartService.WebApi.Models.CartViewModels;
 
-namespace OnlineStore.CartService.WebApi.Controllers.V1
+namespace OnlineStore.CartService.WebApi.Controllers
 {
     /// <summary>
-    /// Cart controller (Version 1.0).
+    /// Cart controller.
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v1/[controller]")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class CartController : ControllerBase
     {
         private readonly IMapper mapper;
@@ -35,12 +36,28 @@ namespace OnlineStore.CartService.WebApi.Controllers.V1
         /// <param name="cartId">The cart Id.</param>
         /// <returns>Cart information.</returns>
         [HttpGet]
+        [ApiVersion("1.0")]
         [Route("{cartId}")]
-        public async Task<ActionResult<CartViewModel>> GetCartAsync([FromRoute] string cartId)
+        public async Task<ActionResult<CartViewModel>> GetCartV1Async([FromRoute] string cartId)
         {
             var cart = await this.cartService.GetCartByIdAsync(cartId);
             var result = this.mapper.Map<CartViewModel>(cart);
             return this.Ok(result);
+        }
+
+        /// <summary>
+        /// Gets cart info by cart id.
+        /// </summary>
+        /// <param name="cartId">The cart Id.</param>
+        /// <returns>List of the cart items.</returns>
+        [HttpGet]
+        [ApiVersion("2.0")]
+        [Route("{cartId}")]
+        public async Task<ActionResult<IEnumerable<CartItemViewModel>>> GetCartV2Async([FromRoute] string cartId)
+        {
+            var coreCart = await this.cartService.GetCartByIdAsync(cartId);
+            var cartItems = this.mapper.Map<IEnumerable<CartItemViewModel>>(coreCart?.CartItems);
+            return this.Ok(cartItems);
         }
 
         /// <summary>

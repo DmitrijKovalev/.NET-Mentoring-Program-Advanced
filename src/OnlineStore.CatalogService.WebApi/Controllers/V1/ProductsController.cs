@@ -16,7 +16,7 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V1
     /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
-    [Route("api/v1/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ProductsController : ControllerBase
     {
         private IMediator mediator;

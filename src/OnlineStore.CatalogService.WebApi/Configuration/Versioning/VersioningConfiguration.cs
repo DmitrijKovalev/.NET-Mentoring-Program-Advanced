@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace OnlineStore.CatalogService.WebApi.Configuration.Versioning
 {
@@ -20,7 +19,6 @@ namespace OnlineStore.CatalogService.WebApi.Configuration.Versioning
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.ReportApiVersions = true;
-                options.ApiVersionReader = new MediaTypeApiVersionReader("ver");
             });
 
             services.AddVersionedApiExplorer(options =>

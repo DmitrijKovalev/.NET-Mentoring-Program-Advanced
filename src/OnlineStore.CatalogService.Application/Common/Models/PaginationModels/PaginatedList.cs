@@ -54,6 +54,22 @@
         public int TotalCount { get; }
 
         /// <summary>
+        /// Gets a value indicating whether has previous page.
+        /// </summary>
+        /// <value>
+        /// <placeholder>A value indicating whether has previous page.</placeholder>
+        /// </value>
+        public bool HasPreviousPage => this.PageNumber > 1;
+
+        /// <summary>
+        /// Gets a value indicating whether has next page.
+        /// </summary>
+        /// <value>
+        /// <placeholder>A value indicating whether has next page.</placeholder>
+        /// </value>
+        public bool HasNextPage => this.PageNumber < this.TotalPages;
+
+        /// <summary>
         /// Gets total pages.
         /// </summary>
         /// <value>

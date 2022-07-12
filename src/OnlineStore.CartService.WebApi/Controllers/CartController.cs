@@ -38,6 +38,9 @@ namespace OnlineStore.CartService.WebApi.Controllers
         [HttpGet]
         [ApiVersion("1.0")]
         [Route("{cartId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CartViewModel>> GetCartV1Async([FromRoute] string cartId)
         {
             var cart = await this.cartService.GetCartByIdAsync(cartId);
@@ -53,6 +56,9 @@ namespace OnlineStore.CartService.WebApi.Controllers
         [HttpGet]
         [ApiVersion("2.0")]
         [Route("{cartId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<IEnumerable<CartItemViewModel>>> GetCartV2Async([FromRoute] string cartId)
         {
             var coreCart = await this.cartService.GetCartByIdAsync(cartId);
@@ -69,6 +75,9 @@ namespace OnlineStore.CartService.WebApi.Controllers
         [HttpPost]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [Route("{cartId}/add-item")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> AddItemToCartAsync([FromRoute] string cartId, [FromBody] CartItemViewModel cartItem)
         {
             var coreCartItem = this.mapper.Map<CartItem>(cartItem);
@@ -84,6 +93,9 @@ namespace OnlineStore.CartService.WebApi.Controllers
         /// <returns>Result of operation.</returns>
         [HttpDelete]
         [Route("{cartId}/items/{itemId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult> RemoveItemFromCartAsync([FromRoute] string cartId, [FromRoute] int itemId)
         {
             await this.cartService.RemoveItemFromCartAsync(cartId, itemId);

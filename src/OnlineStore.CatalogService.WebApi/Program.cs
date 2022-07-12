@@ -1,4 +1,5 @@
 using OnlineStore.CatalogService.Application.Common.Configuration;
+using OnlineStore.CatalogService.WebApi.Configuration.Middlewares;
 using OnlineStore.CatalogService.WebApi.Configuration.Swagger;
 using OnlineStore.CatalogService.WebApi.Configuration.Versioning;
 
@@ -19,5 +20,6 @@ var app = builder.Build();
     app.UseSwaggerDocumentation();
     app.UseHttpsRedirection();
     app.MapControllers();
+    app.UseGlobalErrorHandler();
     app.Run();
 }

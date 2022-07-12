@@ -36,6 +36,8 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V1
         /// <param name="queryParameters">The query parameters.</param>
         /// <returns>List of products.</returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<PaginatedList<ProductViewModel>>> GetProductsByCategoryIdAsync(
             [FromQuery] ProductsQueryParemeters queryParameters)
         {
@@ -63,6 +65,10 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V1
         /// <param name="product">Product to add.</param>
         /// <returns>Id of created product.</returns>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<AddProductCommandResult>> AddProductAsync([FromBody] ProductViewModel product)
         {
             var command = new AddProductCommand
@@ -81,6 +87,10 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V1
         /// <param name="product">Product to update.</param>
         /// <returns>Result of updating.</returns>
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CommandResponseModel>> UpdateProductAsync([FromBody] ProductViewModel product)
         {
             var command = new UpdateProductCommand
@@ -100,6 +110,9 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V1
         /// <returns>Result of deleting.</returns>
         [HttpDelete]
         [Route("{productId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<CommandResponseModel>> DeleteProductAsync([FromRoute] int productId)
         {
             var command = new DeleteProductCommand

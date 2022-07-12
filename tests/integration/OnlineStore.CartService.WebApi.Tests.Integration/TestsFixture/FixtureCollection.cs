@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace OnlineStore.CartService.Tests.Integration.TestsFixture
+namespace OnlineStore.CartService.WebApi.Tests.Integration.TestsFixture
 {
     /// <summary>
     /// Collection defined to share fixture among tests in several test classes.

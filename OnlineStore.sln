@@ -36,9 +36,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CartService.WebApi", "src\OnlineStore.CartService.WebApi\OnlineStore.CartService.WebApi.csproj", "{613B74C7-F936-4734-9F09-26310FF14D22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CatalogService.Application", "src\OnlineStore.CatalogService.Application\OnlineStore.CatalogService.Application.csproj", "{B384786E-0581-421D-8507-AC430F017F88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.Application", "src\OnlineStore.CatalogService.Application\OnlineStore.CatalogService.Application.csproj", "{B384786E-0581-421D-8507-AC430F017F88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CatalogService.WebApi", "src\OnlineStore.CatalogService.WebApi\OnlineStore.CatalogService.WebApi.csproj", "{7F0DAD8B-EF3F-4B5F-8E18-17C4413E58AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineStore.CatalogService.WebApi", "src\OnlineStore.CatalogService.WebApi\OnlineStore.CatalogService.WebApi.csproj", "{7F0DAD8B-EF3F-4B5F-8E18-17C4413E58AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore.CartService.WebApi.Tests.Integration", "tests\integration\OnlineStore.CartService.WebApi.Tests.Integration\OnlineStore.CartService.WebApi.Tests.Integration.csproj", "{41E6AA74-1C13-43D0-B65A-51EECB5540AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +94,10 @@ Global
 		{7F0DAD8B-EF3F-4B5F-8E18-17C4413E58AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F0DAD8B-EF3F-4B5F-8E18-17C4413E58AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F0DAD8B-EF3F-4B5F-8E18-17C4413E58AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41E6AA74-1C13-43D0-B65A-51EECB5540AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41E6AA74-1C13-43D0-B65A-51EECB5540AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41E6AA74-1C13-43D0-B65A-51EECB5540AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41E6AA74-1C13-43D0-B65A-51EECB5540AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -110,6 +116,7 @@ Global
 		{613B74C7-F936-4734-9F09-26310FF14D22} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
 		{B384786E-0581-421D-8507-AC430F017F88} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
 		{7F0DAD8B-EF3F-4B5F-8E18-17C4413E58AA} = {FC8028B4-7863-4FA2-B0B3-87DD8828D83D}
+		{41E6AA74-1C13-43D0-B65A-51EECB5540AF} = {79CAD1E4-F95F-4F6D-B9F5-0A937693261D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {49E3B142-884E-468D-95AB-D7319E4301CE}

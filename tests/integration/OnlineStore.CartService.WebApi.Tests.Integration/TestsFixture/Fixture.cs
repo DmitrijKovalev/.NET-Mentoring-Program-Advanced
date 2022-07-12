@@ -2,10 +2,11 @@
 using DotNet.Testcontainers.Containers.Builders;
 using DotNet.Testcontainers.Containers.Modules;
 using Microsoft.Extensions.Configuration;
-using OnlineStore.CartService.Tests.Integration.Common;
+using OnlineStore.CartService.WebApi.Tests.Integration.Common;
 using Xunit;
+using TestsConfiguration = OnlineStore.CartService.WebApi.Tests.Integration.Common.Configuration;
 
-namespace OnlineStore.CartService.Tests.Integration.TestsFixture
+namespace OnlineStore.CartService.WebApi.Tests.Integration.TestsFixture
 {
     public class Fixture : IAsyncLifetime
     {
@@ -18,7 +19,7 @@ namespace OnlineStore.CartService.Tests.Integration.TestsFixture
                .AddJsonFile(ConfigurationFileName)
                .Build();
 
-            this.Configuration = options.Get<Configuration>();
+            this.Configuration = options.Get<TestsConfiguration>();
 
             if (this.Configuration.UseDocker)
             {
@@ -28,11 +29,15 @@ namespace OnlineStore.CartService.Tests.Integration.TestsFixture
                     .WithPortBinding(27017)
                     .Build();
             }
+
+            this.HttpClient = new CartServiceWebApiFactory(this.Configuration).CreateClient();
         }
 
         internal IDockerContainer Container { get; }
 
-        internal Configuration Configuration { get; }
+        internal TestsConfiguration Configuration { get; }
+
+        internal HttpClient HttpClient { get; }
 
         public async Task InitializeAsync()
         {

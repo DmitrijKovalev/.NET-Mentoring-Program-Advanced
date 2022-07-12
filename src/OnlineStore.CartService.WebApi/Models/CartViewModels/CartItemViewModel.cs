@@ -14,6 +14,7 @@ namespace OnlineStore.CartService.WebApi.Models.CartViewModels
         /// <placeholder>Unique identification.</placeholder>
         /// </value>
         [Required]
+        [Range(1, int.MaxValue)]
         public int Id { get; set; }
 
         /// <summary>

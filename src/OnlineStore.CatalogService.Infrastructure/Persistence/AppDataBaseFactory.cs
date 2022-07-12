@@ -16,11 +16,6 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence
         /// <param name="connectionConfiguration">Connection configuration.</param>
         public AppDataBaseFactory(AppDataBaseConnectionConfiguration connectionConfiguration)
         {
-            if (connectionConfiguration is null)
-            {
-                throw new ArgumentNullException(nameof(connectionConfiguration));
-            }
-
             this.connectionConfiguration = connectionConfiguration;
         }
 

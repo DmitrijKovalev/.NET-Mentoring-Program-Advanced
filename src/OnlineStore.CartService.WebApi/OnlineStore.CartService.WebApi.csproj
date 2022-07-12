@@ -29,4 +29,8 @@
     <ProjectReference Include="..\OnlineStore.CartService\OnlineStore.CartService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(AssemblyName).Tests.Integration" />
+  </ItemGroup>
+
 </Project>

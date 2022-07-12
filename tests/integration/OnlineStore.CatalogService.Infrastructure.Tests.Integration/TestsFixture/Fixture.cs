@@ -32,9 +32,9 @@ namespace OnlineStore.CatalogService.Infrastructure.Tests.Integration.TestsFixtu
             }
         }
 
-        public IDockerContainer Container { get; }
+        internal IDockerContainer Container { get; }
 
-        public Configuration Configuration { get; }
+        internal Configuration Configuration { get; }
 
         public async Task InitializeAsync()
         {

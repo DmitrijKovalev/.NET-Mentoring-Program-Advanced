@@ -27,4 +27,8 @@
     <ProjectReference Include="..\OnlineStore.CatalogService.Application\OnlineStore.CatalogService.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(AssemblyName).Tests.Integration" />
+  </ItemGroup>
+
 </Project>

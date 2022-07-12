@@ -9,7 +9,7 @@ using Xunit;
 namespace OnlineStore.CartService.WebApi.Tests.Integration
 {
     [Collection(nameof(FixtureCollection))]
-    public class CartControllerTests : CartControllerBase
+    public class CartControllerTests : CartControllerTestsBase
     {
         public CartControllerTests(Fixture fixture) : base(fixture)
         {

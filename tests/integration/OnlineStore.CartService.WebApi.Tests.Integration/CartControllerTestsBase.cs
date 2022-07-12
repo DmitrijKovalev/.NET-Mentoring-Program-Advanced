@@ -4,11 +4,11 @@ using OnlineStore.CartService.WebApi.Tests.Integration.TestsFixture;
 
 namespace OnlineStore.CartService.WebApi.Tests.Integration
 {
-    public class CartControllerBase : IDisposable
+    public class CartControllerTestsBase : IDisposable
     {
         private bool disposed = false;
 
-        public CartControllerBase(Fixture fixture)
+        public CartControllerTestsBase(Fixture fixture)
         {
             var configuration = new CartServiceConfiguration
             {

@@ -61,7 +61,7 @@ namespace OnlineStore.CatalogService.Infrastructure.Persistence
         }
 
         /// <inheritdoc/>
-        public async Task DeleteRangeAsync(TEntity[] entity)
+        public async Task DeleteBulkAsync(TEntity[] entity)
         {
             this.dbset.RemoveRange(entity);
             await this.context.SaveChangesAsync();

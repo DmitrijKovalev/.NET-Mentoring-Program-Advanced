@@ -72,7 +72,7 @@ namespace OnlineStore.CatalogService.Domain.Services
                     .ToArray();
                 if (products.Any())
                 {
-                    await this.productRepository.DeleteRangeAsync(products);
+                    await this.productRepository.DeleteBulkAsync(products);
                 }
 
                 var category = await this.GetCategoryInternalAsync(categoryId);
@@ -148,7 +148,7 @@ namespace OnlineStore.CatalogService.Domain.Services
 
                     if (products.Any())
                     {
-                        await this.productRepository.DeleteRangeAsync(products);
+                        await this.productRepository.DeleteBulkAsync(products);
                     }
 
                     await this.RecursiveDeleteAsync(childCategory);

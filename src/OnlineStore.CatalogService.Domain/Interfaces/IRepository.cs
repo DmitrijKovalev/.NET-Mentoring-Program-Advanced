@@ -46,6 +46,6 @@
         /// </summary>
         /// <param name="entities">Entities to delete.</param>
         /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
-        Task DeleteRangeAsync(TEntity[] entities);
+        Task DeleteBulkAsync(TEntity[] entities);
     }
 }

@@ -70,7 +70,7 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V2
 
                 var linkPreviousPage = new Link
                 {
-                    Href = urlPreviousPage ?? string.Empty,
+                    Href = urlPreviousPage,
                     Rel = ResourceUrlType.PreviousPage.ToString(),
                     Method = HttpMethod.Get.ToString(),
                 };
@@ -88,7 +88,7 @@ namespace OnlineStore.CatalogService.WebApi.Controllers.V2
 
                 var linkNextPage = new Link
                 {
-                    Href = urlNextPage ?? string.Empty,
+                    Href = urlNextPage,
                     Rel = ResourceUrlType.NextPage.ToString(),
                     Method = HttpMethod.Get.ToString(),
                 };

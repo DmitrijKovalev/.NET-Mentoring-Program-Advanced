@@ -11,7 +11,7 @@ namespace OnlineStore.CatalogService.Domain.Interfaces
         /// Get all categories.
         /// </summary>
         /// <returns>List of categories.</returns>
-        public IEnumerable<Category> GetAllCategories();
+        public IQueryable<Category> GetAllCategories();
 
         /// <summary>
         /// Get category by Id.

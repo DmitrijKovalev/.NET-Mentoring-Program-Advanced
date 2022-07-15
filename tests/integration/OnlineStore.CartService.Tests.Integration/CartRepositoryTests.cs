@@ -72,7 +72,7 @@ namespace OnlineStore.CartService.Tests.Integration
         }
 
         [Fact]
-        public async Task GivenUpdateCart_WhenCarExists_ShouldUpdateCartSuccessfully()
+        public async Task GivenUpdateCart_WhenCartExists_ShouldUpdateCartSuccessfully()
         {
             // Arrange
             var cartId = Guid.NewGuid().ToString();
@@ -102,7 +102,7 @@ namespace OnlineStore.CartService.Tests.Integration
         }
 
         [Fact]
-        public async Task GivenDeleteCart_WhenCarExists_ShouldDeleteCartSuccessfully()
+        public async Task GivenDeleteCart_WhenCartExists_ShouldDeleteCartSuccessfully()
         {
             // Arrange
             var existedCartId = Guid.NewGuid().ToString();

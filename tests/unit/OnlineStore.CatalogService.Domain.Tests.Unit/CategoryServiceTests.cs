@@ -16,6 +16,7 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
             var expectedCategories = new List<Category>
             {
                 new Category { Id = 1, Name = "One" },
@@ -24,13 +25,13 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
 
             categoryRepository.Setup(repository => repository.GetAll()).Returns(expectedCategories);
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
 
             // Act
             var returnedCategories = service.GetAllCategories();
 
             // Assert
-            returnedCategories.ShouldBeEquivalentTo(expectedCategories.ToList());
+            returnedCategories.ShouldBeEquivalentTo(expectedCategories);
         }
 
         [Fact]
@@ -39,6 +40,7 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
             // Arrange
             var categoryId = 1;
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
             var expectedCategory = new Category { Id = categoryId, Name = "One" };
 
             categoryRepository
@@ -46,7 +48,7 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
                 .Returns(Task.FromResult(expectedCategory))
                 .Verifiable();
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
 
             // Act
             var returnedCategory = await service.GetCategoryByIdAsync(categoryId);
@@ -61,13 +63,14 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
             // Arrange
             var categoryId = 1;
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
 
             categoryRepository
                 .Setup(repository => repository.GetByIdAsync(It.IsAny<int>()))
                 .Returns(Task.FromResult<Category>(null))
                 .Verifiable();
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
 
             // Act
             var action = () => service.GetCategoryByIdAsync(categoryId);
@@ -81,7 +84,8 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
-            var service = new CategoryService(categoryRepository.Object);
+            var productRepository = new Mock<IRepository<Product>>();
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
 
             // Act
             var action = () => service.AddCategoryAsync(null);
@@ -96,7 +100,8 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
-            var service = new CategoryService(categoryRepository.Object);
+            var productRepository = new Mock<IRepository<Product>>();
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var category = new Category();
 
             // Act
@@ -112,7 +117,8 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
-            var service = new CategoryService(categoryRepository.Object);
+            var productRepository = new Mock<IRepository<Product>>();
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var category = new Category
             {
                 Name = string.Empty,
@@ -131,7 +137,8 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
-            var service = new CategoryService(categoryRepository.Object);
+            var productRepository = new Mock<IRepository<Product>>();
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var category = new Category
             {
                 Name = RandomData.GenerateWord(51),
@@ -150,7 +157,8 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
-            var service = new CategoryService(categoryRepository.Object);
+            var productRepository = new Mock<IRepository<Product>>();
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var category = new Category
             {
                 Name = "One",
@@ -170,12 +178,13 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
             categoryRepository
                 .Setup(repository => repository.GetByIdAsync(It.IsAny<int>()))
                 .Returns(Task.FromResult<Category>(null))
                 .Verifiable();
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var category = new Category
             {
                 Name = "One",
@@ -195,8 +204,9 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var category = new Category { Name = "One" };
 
             // Act
@@ -211,8 +221,9 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var categoryForUpdating = new Category { Id = 1, Name = "One" };
 
             categoryRepository
@@ -239,8 +250,9 @@ namespace OnlineStore.CatalogService.Domain.Tests.Unit
         {
             // Arrange
             var categoryRepository = new Mock<IRepository<Category>>();
+            var productRepository = new Mock<IRepository<Product>>();
 
-            var service = new CategoryService(categoryRepository.Object);
+            var service = new CategoryService(categoryRepository.Object, productRepository.Object);
             var categoryToDelete = new Category { Id = 1, Name = "One" };
 
             categoryRepository

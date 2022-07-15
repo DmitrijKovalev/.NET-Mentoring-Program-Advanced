@@ -40,5 +40,12 @@
         /// <param name="entity">The object of deleted entity.</param>
         /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
         Task DeleteAsync(TEntity entity);
+
+        /// <summary>
+        /// Deletes array of objects.
+        /// </summary>
+        /// <param name="entities">Entities to delete.</param>
+        /// <returns><placeholder>A <see cref="Task"/> representing the asynchronous operation.</placeholder></returns>
+        Task DeleteBulkAsync(TEntity[] entities);
     }
 }

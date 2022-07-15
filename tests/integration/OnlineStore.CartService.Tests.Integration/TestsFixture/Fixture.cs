@@ -30,9 +30,9 @@ namespace OnlineStore.CartService.Tests.Integration.TestsFixture
             }
         }
 
-        public IDockerContainer Container { get; }
+        internal IDockerContainer Container { get; }
 
-        public Configuration Configuration { get; }
+        internal Configuration Configuration { get; }
 
         public async Task InitializeAsync()
         {

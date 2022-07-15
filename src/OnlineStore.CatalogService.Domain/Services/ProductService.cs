@@ -28,27 +28,15 @@ namespace OnlineStore.CatalogService.Domain.Services
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Product> GetAllProducts()
+        public IQueryable<Product> GetAllProducts()
         {
-            return this.productRepository.GetAll().ToList();
+            return this.productRepository.GetAll();
         }
 
         /// <inheritdoc/>
         public async Task<Product> GetProductByIdAsync(int productId)
         {
             return await this.GetProductInternalAsync(productId);
-        }
-
-        /// <inheritdoc/>
-        public async Task<IEnumerable<Product>> GetProductsByCategoryIdAsync(int categoryId)
-        {
-            var category = await this.GetCategoryInternalAsync(categoryId);
-
-            var products = this.productRepository
-                .GetAll()
-                .Where(product => product.CategoryId == category.Id);
-
-            return products.ToList();
         }
 
         /// <inheritdoc/>
